@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 cwd = getcwd()
 uploads_dir = path.join(cwd, "uploads")
 if not path.exists(uploads_dir):

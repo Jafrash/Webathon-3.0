@@ -1,17 +1,3 @@
-"""
-This module contains the view functions for handling HTTP requests and rendering HTML templates for the web application.
-
-These functions define the behavior of various routes in the application,
-including user authentication, account management, department and service management,
-order handling, and contact form submission.
-
-Each function serves a specific route defined in the Flask application, processing incoming requests,
-performing necessary database operations, and rendering corresponding HTML templates to provide users with a dynamic web experience.
-
-For more details on each function, refer to their respective docstrings.
-
-Author: Yousef Saeed
-"""
 
 from flask import (
     abort,
@@ -23,6 +9,11 @@ from flask import (
     url_for,
     flash,
 )
+
+from models import User 
+import sys
+
+
 from flask_babel import _, lazy_gettext
 from sqlalchemy import func
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -35,8 +26,18 @@ from os import path
 
 from models import *
 
+from twilio.rest import Client
+import os
+# ✅ Replace these with your actual Twilio credentials
+TWILIO_ACCOUNT_SID =  os.getenv("TWILIO_ACCOUNT_SID")
+TWILIO_AUTH_TOKEN =  os.getenv("TWILIO_AUTH_TOKEN")
+TWILIO_PHONE_NUMBER =os.getenv("TWILIO_PHONE_NUMBER")
+
+client = Client(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN)
+
 
 def get_locale():
+    return request.accept_languages.best_match(["en", "hi"])
     """
     Get the locale based on various sources.
 
@@ -62,7 +63,7 @@ def get_locale():
     return request.accept_languages.best_match(["en", "hi"])
 
 
-babel = Babel(app, locale_selector=get_locale)
+# babel = Babel(app, locale_selector=get_locale)
 
 
 @app.context_processor
@@ -417,6 +418,7 @@ def new():
         render_template: Renders the new.html template with relevant data.
     """
 
+    
     if "loggedin" not in session or session["is_admin"] == False:
         abort(403)
 
@@ -480,10 +482,23 @@ def new():
     elif request.method == "POST":
         msg = _("FillFormError")
 
+    users = User.query.all()
+    for user in users:
+        print(user.phone)
+        if user.phone and request.method=="GET":  # assuming 'phone_number' is a field in User
+            try:
+                client.messages.create (
+                    body="A new department or service has been added. get time",
+                    from_=TWILIO_PHONE_NUMBER,
+                    to="+91"+user.phone,
+                )
+                
+            except Exception as e:
+                print(f"Failed to send SMS to {user.phone}: {e}", file=sys.stdout)
+
     return render_template(
         "new.html", departments=departments, recommend=recommend, msg=msg
     )
-
 
 @app.route("/edit", methods=["GET", "POST"])
 def edit():
