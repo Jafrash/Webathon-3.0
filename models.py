@@ -17,7 +17,7 @@ app.url_map.strict_slashes = False
 
 babel = Babel(app)
 
-app.config["BABEL_DEFAULT_LOCALE"] = "ar"
+app.config["BABEL_DEFAULT_LOCALE"] = "hi"
 app.config["BABEL_TRANSLATION_DIRECTORIES"] = "./translations"
 app.config["SECRET_KEY"] = getenv("SECRET_KEY")
 app.config["UPLOAD_DIRECTORY"] = uploads_dir

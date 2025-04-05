@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/index.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/cards.css') }}">
 <link rel="stylesheet" href="{{ url_for('static', filename='styles/search.css') }}">
-{% if get_locale() == 'ar' %}
+{% if get_locale() == 'hi' %}
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/arabic.css') }}">
 {% endif %}
 {% endblock %}
@@ -76,7 +76,7 @@
     </div>
 </div>
 
-<menu class="nav-menu" {% if get_locale() == 'ar' %} dir="rtl" {% endif %}>
+<menu class="nav-menu" {% if get_locale() == 'hi' %} dir="rtl" {% endif %}>
     <h2 class="title"><b>{{ _('PortalNavigation') }}</b></h2>
     <ul class="footer-links links">
         <li>

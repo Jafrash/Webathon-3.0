@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block body %}
-<div class="order-box" {% if get_locale() == 'ar' %} dir="rtl" {% endif %}>
+<div class="order-box" {% if get_locale() == 'hi' %} dir="rtl" {% endif %}>
     {% with msg = get_flashed_messages() %}
         {% if msg: %}<div class="order-msg">{{ msg[0] }}</div>{% endif %}
     {% endwith %}
@@ -21,7 +21,7 @@
             <b>{{ _('OrderFor') }}</b>
             <a href="{{ url_for('service', id=order.service_id) }}" target="_blank">
                 {{ service.title }}
-                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" {% if get_locale() == 'ar' %} style="transform: scaleX(-1);" {% endif %}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" {% if get_locale() == 'hi' %} style="transform: scaleX(-1);" {% endif %}>
                     <path fill="currentColor" d="M6 6v2h8.59L5 17.59L6.41 19L16 9.41V18h2V6z"/>
                 </svg>
             </a>
@@ -31,7 +31,7 @@
             <h3>
                 <a href="{{ url_for('department', id=department.id) }}" target="_blank">
                     {{ department.title }}
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" {% if get_locale() == 'ar' %} style="transform: scaleX(-1);" {% endif %}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" {% if get_locale() == 'hi' %} style="transform: scaleX(-1);" {% endif %}>
                         <path fill="currentColor" d="M6 6v2h8.59L5 17.59L6.41 19L16 9.41V18h2V6z"/>
                     </svg>
                 </a>

@@ -38,7 +38,7 @@
             {% endif %}
             <textarea rows="6" name="readme" class="text-rtl"></textarea>
         </div>
-        <div class="radio-box" {% if get_locale() == 'ar' %} dir="rtl" {% endif %}>
+        <div class="radio-box" {% if get_locale() == 'hi' %} dir="rtl" {% endif %}>
             <input required type="radio" id="service" name="type" value="Service" onclick="toggleOptionBox()"
                 {% if 'recommend' in request.args and request.args.get('recommend') == 'service' %} checked {% endif %}>
             <label for="service">{{ _('Service') }}</label>
@@ -51,7 +51,7 @@
             {% if 'recommend' in request.args and request.args.get('recommend') == 'service' %} style="display: block;" {% endif %}>
             <label for="associated">{{ _('AssociatedWithDepartment') }}</label>
             <br>
-            <select class="text-rtl" id="associated" name="associated" {% if get_locale() == 'ar' %} dir="rtl" {% endif %}>
+            <select class="text-rtl" id="associated" name="associated" {% if get_locale() == 'hi' %} dir="rtl" {% endif %}>
                 <option value="none">{{ _('NoAssociation') }}</option>
                 {% for department in departments %}
                     <option value="{{ department.id }}">{{ department.title }}</option>
