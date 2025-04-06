@@ -8,8 +8,8 @@
 
 {% block body %}
 <div class="page_details text-rtl">
-    <h1 class="page_title">{{ _('MyOrders') }}</h1>
-    <p class="page_description">{{ _('MyOrdersDescription') }}</p>
+    <h1 class="page_title">{{ _('My Applications') }}</h1>
+    <p class="page_description">{{ _('View all your applications, including completed ones.') }}</p>
 </div>
 
 {% if orders or done_orders %}
@@ -81,7 +81,7 @@
     {% endif %}
 {% else %}
     <div class="wrapper">
-        <h2 class="wrapper-title no-orders">{{ _('NoOrdersLift') }}</h2>
+        <h2 class="wrapper-title no-orders">{{ _('You currently do not have any applications') }}</h2>
     </div>
 {% endif %}
 {% endblock %}

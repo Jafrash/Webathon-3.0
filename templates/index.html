@@ -15,7 +15,7 @@
 <p class="header-description">{{ _('WelcomeMessage') }}</p>
 
 <div class="search-container" {% if not search_query %} style="margin-top: 140px; margin-bottom: 35px;" {% endif %}>
-    <h2 class="search-title">{{ _('SearchIn')}} {{ total_department }} {{ _('DepartmentsAnd')}} {{ total_services }} {{ _('Service')}}</h2>
+    <h2 class="search-title">{{ _('SearchIn')}} {{ total_department }} {{ _('DepartmentsAnd')}} {{ total_services }} {{ _('Schemes')}}</h2>
     <form action="{{ url_for('search') }}" method="get" class="search-form">
         <div class="searchBox">
             <input type="text" name="item" value="{% if request.args.get('item') %}{{ request.args.get('item') }}{% else %}all{% endif %}" hidden>
